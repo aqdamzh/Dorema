@@ -25,4 +25,12 @@ class Mahasiswa extends CI_Controller {
 		$this->load->view('project_list');
 		$this->load->view('footer');
 	}
+	public function dashboard(){
+		$this->load->view('header');
+		$this->load->view('sidebar');
+		$this->load->view('dashboard');
+		$this->load->view('footer');
+	}
+
+	
 }
