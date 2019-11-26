@@ -1,7 +1,23 @@
 <?php
 class Auth extends CI_Controller {
 
+    public function index(){
+        if($this->session->userdata('role_id')==1){
+            redirect('dosen/dashboard');
+        }elseif ($this->session->userdata('role_id')==2){
+            redirect('mahasiswa/list');
+        }else {
+            redirect('auth/login');
+        }
+    }
+
     public function login(){
+
+        if($this->session->userdata('role_id')==1){
+            redirect('dosen/dashboard');
+        }elseif ($this->session->userdata('role_id')==2){
+            redirect('mahasiswa/list');
+        }else {
         $this->form_validation->set_rules('username','
         username','required');
         $this->form_validation->set_rules('password','
@@ -32,13 +48,14 @@ class Auth extends CI_Controller {
                 ->role_id);
 
                 switch($auth->role_id){
-                    case 1 : redirect('dosen');
+                    case 1 : redirect('dosen/dashboard');
                     break;
-                    case 2 : redirect('mahasiswa');
+                    case 2 : redirect('mahasiswa/list');
                     default: break;
 
                 }
             }
+        }
         }
     }
 
