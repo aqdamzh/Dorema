@@ -45,12 +45,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Project Add</h1>
+            <h1>Buat Project</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Dosen</a></li>
-              <li class="breadcrumb-item active">Project Add</li>
+              <li class="breadcrumb-item active">Buat Project</li>
             </ol>
           </div>
         </div>
@@ -63,40 +63,41 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-minus"></i></button>
               </div>
             </div>
+            <form method="post" action="<?php echo base_url().'dosen/tambah_project'; ?>">
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputName">Nama Project</label>
+                <input type="text" name="namaProject" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputDescription">Project Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <label for="inputDescription">Deskripsi Project</label>
+                <textarea name="deskripsi" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
-                </select>
+                <label for="inputDescription">Prasyarat</label>
+                <textarea name="prasyarat" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control">
+                <label for="inputClientCompany">Batas Pendaftaran</label>
+                <input type="date" name="batasPendaftaran" class="form-control">
               </div>
               <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
+                <label for="inputProjectLeader">Kuota</label>
+                <input type="number" name="kuota" class="form-control">
               </div>
+              <button type="reset" class="btn btn-danger"
+                data-dismiss="modal">Reset</button>
+              <button type="submit", class="btn btn-primary">Simpan
+              </button>
             </div>
+            </form>
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->

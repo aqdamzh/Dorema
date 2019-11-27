@@ -6,8 +6,9 @@ class Mahasiswa extends CI_Controller {
 	public function list()
 	{
 		if($this->session->userdata('role_id')==2){
+			$data['project'] = $this->model_project->view_data()->result();
 			$this->load->view('header');
-			$this->load->view('mahasiswa/project_list');
+			$this->load->view('mahasiswa/project_list', $data);
 			$this->load->view('footer');
 		}else {
 			redirect('auth/login');
@@ -22,8 +23,6 @@ class Mahasiswa extends CI_Controller {
 		}else {
 			redirect('auth/login');
 		}
-		
 	}
-
 	
 }
