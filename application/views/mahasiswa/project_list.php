@@ -67,11 +67,24 @@
           <?php foreach ($project as $pjt) : ?>
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-tasks"></i>
-                  <strong><?php echo $pjt->nama_project ?></strong><br>
-                  <small>Oleh:</strong> <?php echo $pjt->pengampu ?></small>
-                </h3>
+              <div class="row">
+                <div class="col-md-8">
+                  <h3 class="card-title">
+                    <i class="fas fa-tasks"></i>
+                    <strong><?php echo $pjt->nama_project ?></strong><br>
+                    <small>Oleh:</strong> <?php echo $pjt->pengampu ?></small>
+                  </h3>
+                </div>
+                <div class="col-md-2 ml-auto row">
+                  <div class="col-md-4">
+                  <?php if(in_array($pjt->id, $pendaftar,TRUE)) {
+                    echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary">
+                  <i class="fas fa-plus-square"></i><br>Telah Terdaftar</button>'); }else {
+                  echo anchor('mahasiswa/daftar/'.$pjt->id,'<button class="btn btn-primary">
+                  <i class="fas fa-plus-square"></i> Daftar</button>'); } ?>
+                  </div>
+                </div>
+                </div>
               </div>
               <div class="card-body">
               <div class="row">
