@@ -16,22 +16,6 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="<?php echo base_url() ?>dosen/dashboard" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url() ?>dosen/add" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Tambah Project
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -45,12 +29,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Buat Project</h1>
+            <h1>Edit Project</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Dosen</a></li>
-              <li class="breadcrumb-item active">Buat Project</li>
+              <li class="breadcrumb-item active">Edit Project</li>
             </ol>
           </div>
         </div>
@@ -60,40 +44,47 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+        <?php foreach($project as $pjt) { ?>
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
 
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
+              <?php echo anchor('dosen/dashboard/', '<button class="btn btn-danger">Batal</button>') ?>
               </div>
             </div>
-            <form method="post" action="<?php echo base_url().'dosen/tambah_project'; ?>">
+            <form method="post" action="<?php echo base_url().'dosen/update'; ?>">
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Nama Project</label>
-                <input type="text" name="namaProject" class="form-control">
+                <input type="hidden" name="id" class="form-control"
+                value="<?php echo $pjt->id ?>">
+                <input type="text" name="nama_project" class="form-control" 
+                value="<?php echo $pjt->nama_project ?>" disabled>
               </div>
               <div class="form-group">
                 <label for="inputDescription">Deskripsi Project</label>
-                <textarea name="deskripsi" class="form-control" rows="4"></textarea> 
+                <textarea name="deskripsi" class="form-control" rows="4" 
+                disabled><?php echo $pjt->deskripsi ?></textarea> 
               </div>
               <div class="form-group">
                 <label for="inputDescription">Prasyarat</label>
                 <textarea class="textarea form-control" name="prasyarat" placeholder="Place some text here" 
                 style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; 
-                border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;"></textarea>
+                border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;" 
+                ><?php echo $pjt->prasyarat ?></textarea>
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">Batas Pendaftaran</label>
-                <input type="date" name="batasPendaftaran" class="form-control">
+                <input type="date" name="batas_pendaftaran" class="form-control" 
+                value="<?php echo $pjt->batas_pendaftaran ?>">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Kuota</label>
-                <input type="number" name="kuota" class="form-control">
+                <input type="number" name="kuota" class="form-control" 
+                value="<?php echo $pjt->kuota ?>">
               </div>
-              <button type="reset" class="btn btn-danger"
+              <button type="reset" class="btn btn-secondary"
                 data-dismiss="modal">Reset</button>
               <button type="submit", class="btn btn-primary">Simpan
               </button>
@@ -104,6 +95,7 @@
           </div>
           <!-- /.card -->
         </div>
+        <?php } ?>
       </div>
     </section>
     <!-- /.content -->

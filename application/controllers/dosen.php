@@ -44,7 +44,46 @@ class Dosen extends CI_Controller {
 
 		);
 		$this->model_project->input_data($data, 'tb_project');
-		redirect('dosen/add');
+		redirect('dosen/dashboard');
+	}
+
+	public function delete($id){
+		$where = array ('id' => $id);
+		$this->model_project->delete_data($where, 'tb_project');
+		redirect('dosen/dashboard');
+	}
+
+	public function edit($id){
+		$where = array('id' => $id);
+		$data['project'] = $this->model_project
+							->edit_data($where, 'tb_project')->result();
+
+		if($this->session->userdata('role_id')==1){
+			$this->load->view('header');
+			$this->load->view('dosen/edit', $data);
+			$this->load->view('footer');
+		}else{
+			redirect('auth/login');
+		}
+	}
+
+	public function update(){
+		$id = $this->input->post('id');
+		$prasyarat = $this->input->post('prasyarat');
+		$batas_pendaftaran = $this->input->post('batas_pendaftaran');
+		$kuota = $this->input->post('kuota');
+		$data = array(
+			'prasyarat' => $prasyarat,
+			'batas_pendaftaran' => $batas_pendaftaran,
+			'kuota' => $kuota,
+		);
+	
+		$where = array(
+			'id' => $id
+		);
+	
+		$this->model_project->update_data($where, $data, 'tb_project');
+		redirect('dosen/dashboard');
 	}
 
 }

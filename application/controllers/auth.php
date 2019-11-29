@@ -48,6 +48,8 @@ class Auth extends CI_Controller {
                 ->nama);
                 $this->session->set_userdata('role_id', $auth
                 ->role_id);
+                $this->session->set_userdata('user_id', $auth
+                ->id);
 
                 switch($auth->role_id){
                     case 1 : redirect('dosen/dashboard');
