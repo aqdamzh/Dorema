@@ -75,12 +75,16 @@
                 </div>
                 <div class="col-md-2 ml-auto row">
                   <div class="col-md-4">
-                  <?php echo anchor('dosen/edit/'.$pjt->id,'<button class="btn btn-primary btn-sm">
+                  <?php echo anchor('dosen/detail/'.$pjt->project_id,'<button class="btn btn-success">
+                  <i class="fas fa-search-plus"></i></button>') ?>
+                  </div>
+                  <div class="col-md-4">
+                  <?php echo anchor('dosen/edit/'.$pjt->project_id,'<button class="btn btn-primary">
                   <i class="fas fa-edit"></i></button>') ?>
                   </div>
                   <div class="col-md-4" onclick="javascript: return confirm('Anda yakin hapus?')">
-                  <?php echo anchor('dosen/delete/'.$pjt->id,
-                  '<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>') ?>
+                  <?php echo anchor('dosen/delete/'.$pjt->project_id,
+                  '<button class="btn btn-danger"><i class="fas fa-trash"></i></button>') ?>
                   </div>
                 </div>
                 </div>

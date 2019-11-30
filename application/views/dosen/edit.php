@@ -50,7 +50,7 @@
             <div class="card-header">
 
               <div class="card-tools">
-              <?php echo anchor('dosen/dashboard/', '<button class="btn btn-danger">Batal</button>') ?>
+              <?php echo anchor('dosen/dashboard/', '<button class="btn btn-info">Batal</button>') ?>
               </div>
             </div>
             <form method="post" action="<?php echo base_url().'dosen/update'; ?>">
@@ -58,7 +58,7 @@
               <div class="form-group">
                 <label for="inputName">Nama Project</label>
                 <input type="hidden" name="id" class="form-control"
-                value="<?php echo $pjt->id ?>">
+                value="<?php echo $pjt->project_id ?>">
                 <input type="text" name="nama_project" class="form-control" 
                 value="<?php echo $pjt->nama_project ?>" disabled>
               </div>

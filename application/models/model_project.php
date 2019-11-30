@@ -24,4 +24,9 @@ class Model_project extends CI_Model{
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    public function detail_data($id = NULL){
+        return $this->db
+        ->get_where('tb_project', array('project_id' => $id))->row();
+    }
 }

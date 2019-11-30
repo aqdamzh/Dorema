@@ -44,7 +44,9 @@ class Mahasiswa extends CI_Controller {
 
 	public function test(){
 		$data['pendaftar'] = $this->model_pendaftar->view_myproject()->result();
-		$this->load->view('test', $data);
+		$data2['pendaftar'] = $this->model_pendaftar->pendaftar_project("14")->result();
+		$data3['pendaftar'] = $this->model_pendaftar->view_pendaftar("1");
+		$this->load->view('test', $data3);
 
 	}
 	

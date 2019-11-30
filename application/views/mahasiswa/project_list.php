@@ -77,10 +77,10 @@
                 </div>
                 <div class="col-md-2 ml-auto row">
                   <div class="col-md-4">
-                  <?php if(in_array($pjt->id, $pendaftar,TRUE)) {
+                  <?php if(in_array($pjt->project_id, $pendaftar,TRUE)) {
                     echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary">
                   <i class="fas fa-plus-square"></i><br>Telah Terdaftar</button>'); }else {
-                  echo anchor('mahasiswa/daftar/'.$pjt->id,'<button class="btn btn-primary">
+                  echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-primary">
                   <i class="fas fa-plus-square"></i> Daftar</button>'); } ?>
                   </div>
                 </div>
