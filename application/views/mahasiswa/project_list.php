@@ -75,14 +75,12 @@
                     <small>Oleh:</strong> <?php echo $pjt->pengampu ?></small>
                   </h3>
                 </div>
-                <div class="col-md-2 ml-auto row">
-                  <div class="col-md-4">
+                <div class="col-md-3 ml-auto">
                   <?php if(in_array($pjt->project_id, $pendaftar,TRUE)) {
-                    echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary">
-                  <i class="fas fa-plus-square"></i><br>Telah Terdaftar</button>'); }else {
-                  echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-primary">
+                    echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary" style="width: 12em">
+                  <i class="fas fa-plus-square"></i> Menunggu Konfirmasi</button>'); }else {
+                  echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-primary" style="width: 12em">
                   <i class="fas fa-plus-square"></i> Daftar</button>'); } ?>
-                  </div>
                 </div>
                 </div>
               </div>
