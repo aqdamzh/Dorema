@@ -57,7 +57,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Nama Project</label>
-                <input type="hidden" name="id" class="form-control"
+                <input type="hidden" name="project_id" class="form-control"
                 value="<?php echo $pjt->project_id ?>">
                 <input type="text" name="nama_project" class="form-control" 
                 value="<?php echo $pjt->nama_project ?>" disabled>
