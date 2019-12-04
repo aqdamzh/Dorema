@@ -22,7 +22,8 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <b>Dorema</b>  Login
+    <b>Dorema</b>  Login <span><img src="<?php echo base_url() ?>assets/adminLTE/dist/img/logo-sso.png" class="user-image" alt="User Image"></span>
+    
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -56,7 +57,7 @@
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block 
-            form-control">Sign In</button>
+            form-control">Login</button>
           </div>
           <!-- /.col -->
         </div>
