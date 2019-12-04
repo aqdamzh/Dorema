@@ -66,11 +66,14 @@
       </li>
     </ul>
 		<ul class="navbar-nav ml-auto">
+      
       <li class="dropdown user user-menu ">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="hidden-xs"> <?php echo $this->session->userdata(
                 'nama') ?></span>
-              <img src="<?php echo base_url() ?>assets/adminLTE/dist/img/Hary Ridart.jpg" class="user-image" alt="User Image">
+              
+              <img src="<?php echo base_url().'assets/adminLTE/dist/img/'.$gambar->gambar ?>" class="user-image" alt="User Image">
+              
         </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="<?php echo base_url('mahasiswa/profil') ?>">
@@ -78,11 +81,12 @@
                   Profile
                 </a>               
                 <div class="dropdown-divider"></div>
-                <?php echo anchor('auth/logout','<span class="dropdown-item">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-200"></i>
+                <?php echo anchor('auth/logout','<span class="dropdown-item"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-200"></i>
                   Logout</span>') ?>
             </div>
       </li>
+      
     </ul>
+    </nav>
 
     
