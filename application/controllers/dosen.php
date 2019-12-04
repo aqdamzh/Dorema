@@ -79,7 +79,7 @@ class Dosen extends CI_Controller {
 	}
 
 	public function update(){
-		$id = $this->input->post('id');
+		$id = $this->input->post('project_id');
 		$prasyarat = $this->input->post('prasyarat');
 		$batas_pendaftaran = $this->input->post('batas_pendaftaran');
 		$kuota = $this->input->post('kuota');
@@ -90,7 +90,7 @@ class Dosen extends CI_Controller {
 		);
 	
 		$where = array(
-			'id' => $id
+			'project_id' => $id
 		);
 	
 		$this->model_project->update_data($where, $data, 'tb_project');
