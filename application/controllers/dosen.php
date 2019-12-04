@@ -5,8 +5,12 @@ class Dosen extends CI_Controller {
 	public function dashboard()
 	{
 		if($this->session->userdata('role_id')==1){
+			$id = $this->session->userdata(
+                'user_id');
+			$arr_gambar = $this->model_pendaftar->profil_gambar($id)->result();
+			$data['gambar'] = $arr_gambar[0];
 			$data['project'] = $this->model_project->view_mydata()->result();
-			$this->load->view('header');
+			$this->load->view('header',$data);
 			$this->load->view('dosen/dashboard_dosen', $data);
 			$this->load->view('footer');
 		}else{
@@ -17,8 +21,12 @@ class Dosen extends CI_Controller {
 
 	public function add()
 	{
+		$id = $this->session->userdata(
+                'user_id');
+		$arr_gambar = $this->model_pendaftar->profil_gambar($id)->result();
+			$data['gambar'] = $arr_gambar[0];
 		if($this->session->userdata('role_id')==1){
-			$this->load->view('header');
+			$this->load->view('header',$data);
 			$this->load->view('dosen/tambah_project');
 			$this->load->view('footer');
 		}else{
@@ -55,10 +63,14 @@ class Dosen extends CI_Controller {
 
 	public function edit($project_id){
 		if($this->session->userdata('role_id')==1){
+			$id = $this->session->userdata(
+                'user_id');
 			$where = array('project_id' => $project_id);
+			$arr_gambar = $this->model_pendaftar->profil_gambar($id)->result();
+			$data['gambar'] = $arr_gambar[0];
 			$data['project'] = $this->model_project
 							->edit_data($where, 'tb_project')->result();
-			$this->load->view('header');
+			$this->load->view('header',$data);
 			$this->load->view('dosen/edit', $data);
 			$this->load->view('footer');
 		}else{
@@ -86,9 +98,13 @@ class Dosen extends CI_Controller {
 	}
 
 	public function detail($project_id){
+		$id = $this->session->userdata(
+                'user_id');
 		$data['detail'] = $this->model_project->detail_data($project_id);
 		$data['pendaftar'] = $this->model_pendaftar->pendaftar_project($project_id)->result();
-		$this->load->view('header');
+		$arr_gambar = $this->model_pendaftar->profil_gambar($id)->result();
+			$data['gambar'] = $arr_gambar[0];
+		$this->load->view('header',$data);
 		$this->load->view('dosen/project_detail', $data);
 		$this->load->view('footer');
 
