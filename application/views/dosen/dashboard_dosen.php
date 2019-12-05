@@ -73,16 +73,18 @@
                     <strong>  <?php echo $pjt->nama_project ?></strong>
                   </h3>
                 </div>
+                <div class="col-md-1">
+                </div>
                 <div class="col-md-2 ml-auto row">
-                  <div>
+                  <div class="mx-2">
                   <?php echo anchor('dosen/detail/'.$pjt->project_id,'<button class="btn btn-success">
                   <i class="fas fa-search-plus"></i></button>') ?>
                   </div>
-                  <div>
+                  <div class="mx-2">
                   <?php echo anchor('dosen/edit/'.$pjt->project_id,'<button class="btn btn-primary">
                   <i class="fas fa-edit"></i></button>') ?>
                   </div>
-                  <div onclick="javascript: return confirm('Anda yakin hapus?')">
+                  <div class="mx-2" onclick="javascript: return confirm('Anda yakin hapus?')">
                   <?php echo anchor('dosen/delete/'.$pjt->project_id,
                   '<button class="btn btn-danger"><i class="fas fa-trash"></i></button>') ?>
                   </div>
