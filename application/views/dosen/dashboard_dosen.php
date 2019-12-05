@@ -67,26 +67,26 @@
             <div class="card card-warning card-outline">
               <div class="card-header bg-gradient-dark border-warning">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-4">
                   <h3 class="card-title">
                     <i class="fas fa-users"></i>
                     <strong>  <?php echo $pjt->nama_project ?></strong>
                   </h3>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-4">
                 </div>
                 <div class="col-md-2 ml-auto row">
-                  <div class="mx-2">
-                  <?php echo anchor('dosen/detail/'.$pjt->project_id,'<button class="btn btn-success">
+                  <div class="mx-1">
+                  <?php echo anchor('dosen/detail/'.$pjt->project_id,'<button class="btn btn-success btn-sm">
                   <i class="fas fa-search-plus"></i></button>') ?>
                   </div>
-                  <div class="mx-2">
-                  <?php echo anchor('dosen/edit/'.$pjt->project_id,'<button class="btn btn-primary">
+                  <div class="mx-1">
+                  <?php echo anchor('dosen/edit/'.$pjt->project_id,'<button class="btn btn-primary btn-sm">
                   <i class="fas fa-edit"></i></button>') ?>
                   </div>
-                  <div class="mx-2" onclick="javascript: return confirm('Anda yakin hapus?')">
+                  <div class="mx-1" onclick="javascript: return confirm('Anda yakin hapus?')">
                   <?php echo anchor('dosen/delete/'.$pjt->project_id,
-                  '<button class="btn btn-danger"><i class="fas fa-trash"></i></button>') ?>
+                  '<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>') ?>
                   </div>
                 </div>
               </div>
