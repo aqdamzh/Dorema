@@ -82,7 +82,7 @@
                   echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
                   <i class="fas fa-plus"></i> Daftar</button>'); } ?>
                 </div>
-                </div>
+              </div>
               </div>
               <div class="card-body">
               <div class="row">

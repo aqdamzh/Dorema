@@ -66,7 +66,7 @@
           <?php foreach ($project as $pjt) : ?>
             <div class="card card-warning card-outline">
               <div class="card-header bg-gradient-dark border-warning">
-                <div class="row">
+              <div class="row">
                 <div class="col-md-8">
                   <h3 class="card-title">
                     <i class="fas fa-users"></i>
@@ -74,20 +74,20 @@
                   </h3>
                 </div>
                 <div class="col-md-2 ml-auto row">
-                  <div class="col-md-4">
+                  <div class="col-md-4 ml-auto">
                   <?php echo anchor('dosen/detail/'.$pjt->project_id,'<button class="btn btn-success">
                   <i class="fas fa-search-plus"></i></button>') ?>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 ml-auto">
                   <?php echo anchor('dosen/edit/'.$pjt->project_id,'<button class="btn btn-primary">
                   <i class="fas fa-edit"></i></button>') ?>
                   </div>
-                  <div class="col-md-4" onclick="javascript: return confirm('Anda yakin hapus?')">
+                  <div class="col-md-4 ml-auto" onclick="javascript: return confirm('Anda yakin hapus?')">
                   <?php echo anchor('dosen/delete/'.$pjt->project_id,
                   '<button class="btn btn-danger"><i class="fas fa-trash"></i></button>') ?>
                   </div>
                 </div>
-                </div>
+              </div>
               </div>
               <div class="card-body">
               <div class="row">
