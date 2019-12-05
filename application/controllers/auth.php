@@ -2,9 +2,9 @@
 class Auth extends CI_Controller {
 
     public function index(){
-        if($this->session->userdata('role_id')==1){
+        if($this->session->userdata('role')=='staff'){
             redirect('dosen/dashboard');
-        }elseif ($this->session->userdata('role_id')==2){
+        }elseif ($this->session->userdata('role')=='mahasiswa'){
             redirect('mahasiswa/list');
         }else {
             redirect('auth/login');
@@ -13,9 +13,9 @@ class Auth extends CI_Controller {
 
     public function login(){
 
-        if($this->session->userdata('role_id')==1){
+        if($this->session->userdata('role')=='staff'){
             redirect('dosen/dashboard');
-        }elseif ($this->session->userdata('role_id')==2){
+        }elseif ($this->session->userdata('role')=='mahasiswa'){
             redirect('mahasiswa/list');
         }else {
         $this->form_validation->set_rules('username','
@@ -42,19 +42,45 @@ class Auth extends CI_Controller {
               </div>');
               redirect('auth/login');
             } else {
-                $this->session->set_userdata('username', $auth
-                ->username);
-                $this->session->set_userdata('nama', $auth
-                ->nama);
-                $this->session->set_userdata('role_id', $auth
-                ->role_id);
-                $this->session->set_userdata('user_id', $auth
-                ->id);
+                $this->session->set_userdata('username', $auth->username);
+                $this->session->set_userdata('name', $auth->name);
+                $this->session->set_userdata('role', $auth->role);
+                $this->session->set_userdata('user_id', $auth->id);
+                $this->session->set_userdata('faculty', $auth->faculty);
+                $this->session->set_userdata('study_program', $auth->study_program);
+                $this->session->set_userdata('educational_program', $auth->educational_program);
 
-                switch($auth->role_id){
-                    case 1 : redirect('dosen/dashboard');
+                switch($auth->role){
+                    case 'staff' : 
+                        $nip = $this->session->userdata('user_id');
+                        $name = $this->session->userdata('name');
+                        $data = array('nip' => $nip,'name' => $name,);
+
+                        $auth_dosen = $this->model_user->cek_dosen($nip);
+                        if($auth_dosen == FALSE){
+                            $this->model_user->input_dosen($data);
+                        }
+                        redirect('dosen/dashboard');
                     break;
-                    case 2 : redirect('mahasiswa/list');
+                    case 'mahasiswa' :
+                        $npm = $this->session->userdata('user_id');
+                        $name = $this->session->userdata('name');
+                        $faculty = $this->session->userdata('faculty');
+                        $study_program = $this->session->userdata('study_program');
+                        $educational_program = $this->session->userdata('educational_program');
+                        $data = array(
+                            'npm' => $npm,
+                            'name' => $name,
+                            'faculty' => $faculty,
+                            'study_program' => $study_program,
+                            'educational_program' => $educational_program,);
+
+                        $auth_dosen = $this->model_user->cek_mahasiswa($npm);
+                        if($auth_dosen == FALSE){
+                            $this->model_user->input_mahasiswa($data);
+                        } 
+                        redirect('mahasiswa/list');
+                    break;
                     default: break;
 
                 }

@@ -31,7 +31,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white  navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -68,11 +68,11 @@
 		<ul class="navbar-nav ml-auto">
       
       <li class="dropdown user user-menu ">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <a href="#" class="dropdown-toggle text-dark" data-toggle="dropdown">
               <span class="hidden-xs"> <?php echo $this->session->userdata(
-                'nama') ?></span>
+                'name') ?> </span>
               
-              <img src="<?php echo base_url().'assets/adminLTE/dist/img/'.$gambar->gambar ?>" class="user-image" alt="User Image">
+              <img src="<?php echo base_url().'assets/adminLTE/dist/img/'.$gambar->photo ?>" class="user-image" alt="User Image">
               
         </a>
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

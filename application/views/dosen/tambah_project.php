@@ -1,14 +1,14 @@
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-warning elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url() ?>" class="brand-link">
+    <a href="<?php echo base_url() ?>" class="brand-link border-warning">
       <img src="<?php echo base_url() ?>assets/adminLTE/dist/img/DoremaLogo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Dorema</span>
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar bg-gradient-dark">
       <!-- Sidebar user panel (optional) -->
 
       <!-- Sidebar Menu -->
@@ -18,7 +18,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="<?php echo base_url() ?>dosen/dashboard" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
                 Dashboard
               </p>
@@ -61,7 +61,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-6">
-          <div class="card card-primary">
+          <div class="card card-dark">
             <div class="card-header">
 
               <div class="card-tools">

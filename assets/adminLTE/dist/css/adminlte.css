@@ -15541,7 +15541,7 @@ html.maximized-card {
 }
 
 .todo-list .primary {
-  border-left-color: #007bff;
+  border-left-color: #eeff00;
 }
 
 .todo-list .secondary {
@@ -15593,7 +15593,7 @@ html.maximized-card {
 }
 
 .todo-list .blue {
-  border-left-color: #007bff;
+  border-left-color: #eeff00;
 }
 
 .todo-list .indigo {
@@ -15655,7 +15655,7 @@ html.maximized-card {
 }
 
 .card-primary:not(.card-outline) .card-header {
-  background-color: #007bff;
+  background-color: #eeff00;
 }
 
 .card-primary:not(.card-outline) .card-header,
@@ -15668,7 +15668,7 @@ html.maximized-card {
 }
 
 .card-primary.card-outline {
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #eeff00;
 }
 
 .card-primary.card-outline-tabs .card-header a:hover {
@@ -15676,7 +15676,7 @@ html.maximized-card {
 }
 
 .card-primary.card-outline-tabs .card-header a.active {
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #eeff00;
 }
 
 .bg-primary .btn-tool,

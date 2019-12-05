@@ -109,9 +109,9 @@
                     <?php foreach ($pendaftar as $pdr) : ?>
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="<?php echo base_url() ?>assets/adminLTE/dist/img/avatar.png" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="<?php echo base_url() ?>assets/adminLTE/dist/img/<?php echo $pdr->photo ?>" alt="user image">
                         <span class="username">
-                          <a href="#"><?php echo $pdr->nama ?></a>
+                          <a href="#"><?php echo $pdr->name ?></a>
                         </span>
                       </div>
                       <!-- /.user-block -->

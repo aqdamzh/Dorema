@@ -1,14 +1,14 @@
       <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-warning elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url() ?>" class="brand-link">
+    <a href="<?php echo base_url() ?>" class="brand-link border-warning">
       <img src="<?php echo base_url() ?>assets/adminLTE/dist/img/DoremaLogo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Dorema</span>
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar bg-gradient-dark">
       <!-- Sidebar user panel (optional) -->
 
       <!-- Sidebar Menu -->
@@ -18,7 +18,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="<?php echo base_url() ?>mahasiswa/dashboard" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
                 Dashboard
               </p>
@@ -26,7 +26,7 @@
           </li>
           <li class="nav-item">
             <a href="<?php echo base_url() ?>mahasiswa/list" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 List Project
               </p>
@@ -39,7 +39,7 @@
     <!-- /.sidebar -->
   </aside>
 
-  <div class="content-wrapper" style="min-height: 1419.6px;">
+  <div class="content-wrapper" style="min-height: 1419.6px; ">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -65,12 +65,12 @@
         <div class="row">
           <div class="col-md-12">
           <?php foreach ($project as $pjt) : ?>
-            <div class="card card-primary card-outline">
-              <div class="card-header">
+            <div class="card card-warning card-outline">
+              <div class="card-header bg-gradient-dark border-warning">
               <div class="row">
                 <div class="col-md-8">
                   <h3 class="card-title">
-                    <i class="fas fa-tasks"></i>
+                    <i class="fas fa-users"></i>
                     <strong><?php echo $pjt->nama_project ?></strong><br>
                     <small>Oleh:</strong> <?php echo $pjt->pengampu ?></small>
                   </h3>
@@ -78,9 +78,9 @@
                 <div class="col-md-3 ml-auto">
                   <?php if(in_array($pjt->project_id, $pendaftar,TRUE)) {
                     echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary" style="width: 12em">
-                  <i class="fas fa-plus-square"></i> Menunggu Konfirmasi</button>'); }else {
-                  echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-primary" style="width: 12em">
-                  <i class="fas fa-plus-square"></i> Daftar</button>'); } ?>
+                  <i class="fas fa-spinner"></i> Menunggu Konfirmasi</button>'); }else {
+                  echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
+                  <i class="fas fa-plus"></i> Daftar</button>'); } ?>
                 </div>
                 </div>
               </div>

@@ -5,9 +5,9 @@ class Model_project extends CI_Model{
         return $this->db->get('tb_project');
     }
     public function view_mydata(){
-        $pengampu = $this->session->userdata('nama');
+        $pengampu = $this->session->userdata('user_id');
         return $this->db
-        ->where('pengampu',$pengampu)
+        ->where('id_pengampu',$pengampu)
         ->get('tb_project');
     }
     public function input_data($data, $table){

@@ -21,13 +21,8 @@ class Model_pendaftar extends CI_Model{
     public function pendaftar_project($where){
         $this->db->select('*');
         $this->db->from('tb_pendaftar');
-        $this->db->join('tb_user', 'tb_user.id = tb_pendaftar.id_pendaftar');
+        $this->db->join('tb_mahasiswa', 'tb_mahasiswa.npm = tb_pendaftar.id_pendaftar');
         return $this->db->where('id_project', $where)->get();
-    }
-    public function profil_gambar($where){
-        $this->db->select('gambar');
-        $this->db->from('tb_user');
-        return $this->db->where('id',$where)->get();
     }
 
 }

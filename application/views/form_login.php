@@ -56,7 +56,7 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block 
+            <button type="submit" class="btn btn-dark btn-block 
             form-control">Login</button>
           </div>
           <!-- /.col -->

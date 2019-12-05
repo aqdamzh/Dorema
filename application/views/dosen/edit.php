@@ -46,7 +46,7 @@
       <div class="row">
         <?php foreach($project as $pjt) { ?>
         <div class="col-md-6">
-          <div class="card card-primary">
+          <div class="card card-dark">
             <div class="card-header">
 
               <div class="card-tools">
