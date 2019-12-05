@@ -68,14 +68,14 @@
             <div class="card card-warning card-outline">
               <div class="card-header bg-gradient-dark border-warning">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6 my-2">
                   <h3 class="card-title">
                     <i class="fas fa-users"></i>
                     <strong><?php echo $pjt->nama_project ?></strong><br>
                     <small>Oleh:</strong> <?php echo $pjt->pengampu ?></small>
                   </h3>
                 </div>
-                <div class="col-md-3 ml-auto">
+                <div class="col-md-2 ml-auto my-2">
                   <?php if(in_array($pjt->project_id, $pendaftar,TRUE)) {
                     echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary" style="width: 12em">
                   <i class="fas fa-spinner"></i> Menunggu Konfirmasi</button>'); }else {
