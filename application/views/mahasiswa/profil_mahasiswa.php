@@ -103,11 +103,6 @@
 
                     <p class="text-muted"><?php echo $mahasiswa->interest ?></p>
                     
-                    <hr>
-
-                    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                    <p class="text-muted"><?php echo $mahasiswa->profile_description ?></p>
                 </div>
                 <!-- /.card-body -->
                 </div>
@@ -160,14 +155,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="profile_description" class="col-sm-2 col-form-label">Deskripsi Profile</label>
-                            <div class="col-sm-10">
-                            <textarea class="form-control" name="profile_description" id="profile_description" placeholder="Profile Description"
-                            ><?php echo $mahasiswa->profile_description ?></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="photo" class="col-sm-2 col-form-label">Profile Picture</label>
+                            <label for="photo" class="col-sm-2 col-form-label">Gambar Profile</label>
                             <div class="col-sm-10">
                             <input type="file" name="photo" id="photo" class="form-control">
                             </div>

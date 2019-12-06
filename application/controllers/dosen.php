@@ -119,4 +119,9 @@ class Dosen extends CI_Controller {
 		redirect('dosen/detail/'.$data->id_project);
 	}
 
+	public function download_cv($cv){
+		force_download('./assets/files/'.$cv,NULL);
+		
+	}
+
 }

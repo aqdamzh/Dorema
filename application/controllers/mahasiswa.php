@@ -76,15 +76,14 @@ class Mahasiswa extends CI_Controller {
 		$address = $this->input->post('address');
 		$skill = $this->input->post('skill');
 		$interest = $this->input->post('interest');
-		$profile_description = $this->input->post('profile_description');
 		$picture = $_FILES['photo'];
 
 		if($picture=''){}else{
-			$config['upload_path']	= './assets/adminLTE/dist/img';
-			$config['allowed_types'] = 'jpg|png|gif';
+			$conf_pic['upload_path']	= './assets/files';
+			$conf_pic['allowed_types'] = 'jpg|png|gif';
 		}
 
-		$this->load->library('upload', $config);
+		$this->load->library('upload', $conf_pic);
 		if(!$this->upload->do_upload('photo')){
 			echo "Upload Gagal!"; die();
 		}else{
@@ -96,7 +95,6 @@ class Mahasiswa extends CI_Controller {
 			'address' => $address,
 			'skill' => $skill,
 			'interest' => $interest,
-			'profile_description' => $profile_description,
 			'photo' => $picture,
 		);
 	

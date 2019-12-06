@@ -115,13 +115,15 @@
                         </span>
                       </div>
                       <!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore.
-                      </p>
+                      <h6><strong>Curriculum vitae:</strong></h6>
+                      <?php echo anchor('dosen/download_cv/'.$pdr->cv,'<button class="btn btn-link btn-sm">
+                            <i class="fas fa-file-download mr-1"></i>Download</button>') ?>
+                      <h6><strong>Jurusan:</strong></h6>
+                      <p><?php echo $pdr->study_program ?></p>
+                      <h6><strong>Skill:</strong></h6>
+                      <p><?php echo $pdr->skill ?></p>
 
-                      <p>
+                      <p class="mt-4">
                             <?php if($pdr->status_pendaftar=="Diterima"){ ?>
                                 <button class="btn btn-info">
                                 <i class="fas fa-check-double"></i> Telah Diterima</button>
