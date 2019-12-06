@@ -70,17 +70,17 @@
               <div class="row">
                 <div class="col-md-6 my-2">
                   <h3 class="card-title">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-users mr-2"></i>
                     <strong><?php echo $pjt->nama_project ?></strong><br>
-                    <small>Oleh:</strong> <?php echo $pjt->pengampu ?></small>
+                    <small class="ml-4">Oleh:</strong> <?php echo $pjt->pengampu ?></small>
                   </h3>
                 </div>
                 <div class="col-md-2 ml-auto my-2">
                   <?php if(in_array($pjt->project_id, $pendaftar,TRUE)) {
                     echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary" style="width: 12em">
-                  <i class="fas fa-spinner"></i> Menunggu Konfirmasi</button>'); }else {
+                  <i class="fas fa-spinner mr-1"></i>Telah Daftar</button>'); }else {
                   echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
-                  <i class="fas fa-plus"></i> Daftar</button>'); } ?>
+                  <i class="fas fa-plus mr-1"></i> Daftar</button>'); } ?>
                 </div>
               </div>
               </div>

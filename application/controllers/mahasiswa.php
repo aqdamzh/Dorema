@@ -61,7 +61,53 @@ class Mahasiswa extends CI_Controller {
 
 	}
 	public function profil(){
-		$this->load->view('mahasiswa/profil_mahasiswa');
+		$id = $this->session->userdata('user_id');
+		$where = array('npm' => $id);
+		$arr_gambar = $this->model_user->photo_mahasiswa($id)->result();
+		$data['gambar'] = $arr_gambar[0];
+		$data['mahasiswa'] = $this->model_user->get_mahasiswa($where, 'tb_mahasiswa')->result();
+
+		$this->load->view('header',$data);
+		$this->load->view('mahasiswa/profil_mahasiswa',$data);
+		$this->load->view('footer');
+	}
+
+	public function update_profile(){
+		$id = $this->input->post('npm');
+		$phone_number = $this->input->post('phone');
+		$address = $this->input->post('address');
+		$skill = $this->input->post('skill');
+		$interest = $this->input->post('interest');
+		$profile_description = $this->input->post('profile_description');
+		$picture = $_FILES['photo'];
+
+		if($picture=''){}else{
+			$config['upload_path']	= './assets/adminLTE/dist/img';
+			$config['allowed_types'] = 'jpg|png|gif';
+		}
+
+		$this->load->library('upload', $config);
+		if(!$this->upload->do_upload('photo')){
+			echo "Upload Gagal!"; die();
+		}else{
+			$picture = $this->upload->data('file_name');
+		}
+
+		$data = array(
+			'phone_number' => $phone_number,
+			'address' => $address,
+			'skill' => $skill,
+			'interest' => $interest,
+			'profile_description' => $profile_description,
+			'photo' => $picture,
+		);
+	
+		$where = array(
+			'npm' => $id
+		);
+	
+		$this->model_user->update_mahasiswa($where, $data);
+		redirect('mahasiswa/profil');
 	}
 	
 }

@@ -69,8 +69,7 @@ class Dosen extends CI_Controller {
 			$where = array('project_id' => $project_id);
 			$arr_gambar = $this->model_user->photo_dosen($id)->result();
 			$data['gambar'] = $arr_gambar[0];
-			$data['project'] = $this->model_project
-							->edit_data($where, 'tb_project')->result();
+			$data['project'] = $this->model_project->edit_data($where, 'tb_project')->result();
 			$this->load->view('header',$data);
 			$this->load->view('dosen/edit', $data);
 			$this->load->view('footer');

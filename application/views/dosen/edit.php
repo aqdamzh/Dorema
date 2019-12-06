@@ -86,8 +86,7 @@
               </div>
               <button type="reset" class="btn btn-secondary"
                 data-dismiss="modal">Reset</button>
-              <button type="submit", class="btn btn-primary">Simpan
-              </button>
+              <button type="submit", class="btn btn-primary">Simpan</button>
             </div>
             </form>
 
