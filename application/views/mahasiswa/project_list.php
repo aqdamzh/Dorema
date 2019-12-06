@@ -67,7 +67,7 @@
           <?php foreach ($project as $pjt) : ?>
             <div class="card card-warning card-outline">
               <div class="card-header bg-gradient-dark border-warning">
-              <div class="row">
+              <div class="row justify-content-between">
                 <div class="col-md-6 my-2">
                   <h3 class="card-title">
                     <i class="fas fa-users mr-2"></i>
@@ -75,12 +75,16 @@
                     <small class="ml-4">Oleh:</strong> <?php echo $pjt->pengampu ?></small>
                   </h3>
                 </div>
-                <div class="col-md-2 ml-auto my-2">
+                <div class="col-md-2 my-2">
                   <?php if(in_array($pjt->project_id, $pendaftar,TRUE)) {
                     echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary" style="width: 12em">
-                  <i class="fas fa-spinner mr-1"></i>Telah Daftar</button>'); }else {
-                  echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
-                  <i class="fas fa-plus mr-1"></i> Daftar</button>'); } ?>
+                  <i class="fas fa-spinner mr-1"></i>Telah Daftar</button>'); 
+                }elseif(!($mahasiswa->address==''||$mahasiswa->phone_number==''||$mahasiswa->skill||''||$mahasiswa->interest='')){
+                    echo anchor('mahasiswa/profil/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
+                    <i class="fas fa-plus mr-1"></i> Daftar</button>');
+                  }else {
+                  echo anchor('mahasiswa/profil','<button class="btn btn-danger" style="width: 12em">
+                  <i class="fas fa-exclamation-triangle mr-1"></i> Lengkapi Profile!<br>Untuk Daftar</button>'); } ?>
                 </div>
               </div>
               </div>

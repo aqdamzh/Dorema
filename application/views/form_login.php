@@ -31,8 +31,6 @@
       <p class="login-box-msg">Sign in to start your session</p>
       <?php echo $this->session->flashdata('pesan') ?>
       <form action="<?php echo base_url('auth/login') ?>" method="post">
-      <?php echo form_error('username', '<div class="text-danger 
-          small ml-2">','</div>'); ?>
       <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Username"
           name="username">

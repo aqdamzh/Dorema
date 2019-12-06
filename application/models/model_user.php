@@ -48,10 +48,6 @@ class Model_user extends CI_Model{
         return $this->db->where('npm',$where)->get();
     }
 
-    public function get_mahasiswa($where, $table){
-        return $this->db->get_where($table, $where);
-    }
-
     public function update_mahasiswa($where, $data){
         $this->db->where($where);
         $this->db->update('tb_mahasiswa', $data);
