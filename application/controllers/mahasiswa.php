@@ -52,13 +52,33 @@ class Mahasiswa extends CI_Controller {
 			redirect('auth/login');
 		}
 	}
-	public function daftar($id){
+	public function daftar(){
 		SSO\SSO::authenticate();
 		$user = SSO\SSO::getUser();
+
+
+
+		$pdf = $_FILES['cv'];
+
+		if($picture=''){}else{
+			$conf_pdf['upload_path']	= './assets/files';
+			$conf_pdf['allowed_types'] = 'pdf';
+		}
+
+		$this->load->library('upload', $conf_pdf);
+		if(!$this->upload->do_upload('cv')){
+			echo "Upload Gagal!"; die();
+		}else{
+			$pdf = $this->upload->data('file_name');
+		}
+
+
+		$project_id = $this->input->post('project_id');
 		$data = array(
 			'id_pendaftar'	=>	$user->npm ,
-			'id_project'	=>	$id ,
+			'id_project'	=>	$project_id ,
 			'status_pendaftar'	=> "Menunggu Konfirmasi",
+			'cv' => $pdf,
 		);
 		$this->model_pendaftar->input_pendaftar($data, 'tb_pendaftar');
 		redirect('mahasiswa/list');
@@ -118,6 +138,19 @@ class Mahasiswa extends CI_Controller {
 	
 		$this->model_user->update_mahasiswa($where, $data);
 		redirect('mahasiswa/profil');
+	}
+
+	public function upload_cv($id_project){
+		SSO\SSO::authenticate();
+		$user = SSO\SSO::getUser();
+		$id = $user->npm;
+		$arr_gambar = $this->model_user->photo_mahasiswa($id)->result();
+		$data['gambar'] = $arr_gambar[0];
+		$data['project'] = $id_project;
+		$data['user'] = $this->model_user->cek_mahasiswa($id);
+		$this->load->view('mahasiswa/header',$data);
+		$this->load->view('mahasiswa/upload_cv', $data);
+		$this->load->view('footer');
 	}
 	
 }

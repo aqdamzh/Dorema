@@ -80,7 +80,7 @@
                     echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary" style="width: 12em">
                   <i class="fas fa-spinner mr-1"></i>Telah Daftar</button>'); 
                 }elseif(!($user->phone_number==''||$user->skill==''||$user->interest=='')){
-                    echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
+                    echo anchor('mahasiswa/upload_cv/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
                     <i class="fas fa-plus mr-1"></i> Daftar</button>');
                   }else {
                   echo anchor('mahasiswa/profil','<button class="btn btn-danger" style="width: 12em">
