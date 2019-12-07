@@ -93,7 +93,7 @@ class Mahasiswa extends CI_Controller {
 		$picture = $_FILES['photo'];
 
 		if($picture=''){}else{
-			$conf_pic['upload_path']	= './assets/files';
+			$conf_pic['upload_path']	= './assets/adminLTE/dist/img/';
 			$conf_pic['allowed_types'] = 'jpg|png|gif';
 		}
 
