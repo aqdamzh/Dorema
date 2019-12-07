@@ -1,7 +1,7 @@
     <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-warning elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url() ?>" class="brand-link border-warning">
+    <a href="<?php echo base_url() ?>mahasiswa/list" class="brand-link border-warning">
       <img src="<?php echo base_url() ?>assets/adminLTE/dist/img/DoremaLogo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Dorema</span>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Mahasiswa</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() ?>mahasiswa/list">Home</a></li>
                 <li class="breadcrumb-item active">Project Terdaftar</li>
                 </ol>
             </div>

@@ -1,7 +1,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="<?php echo base_url() ?>" class="brand-link">
+        <a href="<?php echo base_url() ?>mahasiswa/list" class="brand-link">
         <img src="<?php echo base_url() ?>assets/adminLTE/dist/img/DoremaLogo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">Dorema</span>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() ?>mahasiswa/list">Home</a></li>
                 <li class="breadcrumb-item active">User Profile</li>
                 </ol>
             </div>
@@ -50,12 +50,12 @@
                 <div class="card card-warning card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                    <img class="profile-user-img img-fluid" src="<?php echo base_url().'assets/adminLTE/dist/img/'.$mahasiswa->photo ?>" alt="User profile picture">
+                    <img class="profile-user-img img-fluid" src="<?php echo base_url().'assets/adminLTE/dist/img/'.$user->photo ?>" alt="User profile picture">
                     </div>
 
-                    <h3 class="profile-username text-center"><?php echo $mahasiswa->name ?></h3>
+                    <h3 class="profile-username text-center"><?php echo $user->name ?></h3>
 
-                    <p class="text-muted text-center"><?php echo $mahasiswa->study_program ?></p>
+                    <p class="text-muted text-center"><?php echo $user->study_program ?></p>
 
                     <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
@@ -80,28 +80,28 @@
                     <strong><i class="fas fa-book mr-1"></i> Education</strong>
 
                     <p class="text-muted">
-                    <?php echo $mahasiswa->study_program ?><br><?php echo $mahasiswa->educational_program ?>
+                    <?php echo $user->study_program ?><br><?php echo $user->educational_program ?>
                     </p>
 
                     <hr>
 
                     <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                    <p class="text-muted"><?php echo $mahasiswa->address ?></p>
+                    <p class="text-muted"><?php echo $user->address ?></p>
 
                     <hr>
 
                     <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
 
                     <p class="text-muted">
-                    <?php echo $mahasiswa->skill ?>
+                    <?php echo $user->skill ?>
                     </p>
 
                     <hr>
 
                     <strong><i class="fas fa-smile-beam mr-1"></i> Interest</strong>
 
-                    <p class="text-muted"><?php echo $mahasiswa->interest ?></p>
+                    <p class="text-muted"><?php echo $user->interest ?></p>
                     
                 </div>
                 <!-- /.card-body -->
@@ -119,16 +119,16 @@
                             <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
                             <input type="hidden" name="npm" class="form-control"
-                             value="<?php echo $mahasiswa->npm ?>">
+                             value="<?php echo $user->npm ?>">
                             <input type="text" class="form-control" name="name" id="name" placeholder="Name"
-                            value="<?php echo $mahasiswa->name ?>" disabled>
+                            value="<?php echo $user->name ?>" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="phone" class="col-sm-2 col-form-label">Telepon</label>
                             <div class="col-sm-10">
                             <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number"
-                            value="<?php echo $mahasiswa->phone_number ?>">
+                            value="<?php echo $user->phone_number ?>">
                             </div>
                         </div>
                         <?php echo form_error('address', '<div class="text-danger 
@@ -137,21 +137,21 @@
                             <label for="address" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-10">
                             <input type="text" class="form-control" name="address" id="address" placeholder="Address"
-                            value="<?php echo $mahasiswa->address ?>">
+                            value="<?php echo $user->address ?>">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="skill" class="col-sm-2 col-form-label">Kemampuan</label>
                             <div class="col-sm-10">
                             <textarea class="form-control" name="skill" id="skill" placeholder="Skills"
-                            ><?php echo $mahasiswa->skill ?></textarea>
+                            ><?php echo $user->skill ?></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="interest" class="col-sm-2 col-form-label">Ketertarikan</label>
                             <div class="col-sm-10">
                             <textarea class="form-control" name="interest" id="interest" placeholder="Interest"
-                            ><?php echo $mahasiswa->interest ?></textarea>
+                            ><?php echo $user->interest ?></textarea>
                             </div>
                         </div>
                         <div class="form-group row">

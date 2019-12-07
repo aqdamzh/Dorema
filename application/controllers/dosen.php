@@ -4,13 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dosen extends CI_Controller {
 	public function dashboard()
 	{
+		$this->load->library('session');
 		if($this->session->userdata('role')=='staff'){
 			$id = $this->session->userdata('user_id');
 			$arr_gambar = $this->model_user->photo_dosen($id)->result();
 			$data['gambar'] = $arr_gambar[0];
 			$data['project'] = $this->model_project->view_mydata()->result();
-			
-			$this->load->view('header',$data);
+			$data['user'] = $this->model_user->cek_dosen($id);
+			$this->load->view('dosen/header',$data);
 			$this->load->view('dosen/dashboard_dosen', $data);
 			$this->load->view('footer');
 		}else{
@@ -21,13 +22,14 @@ class Dosen extends CI_Controller {
 
 	public function add()
 	{
+		$this->load->library('session');
 		if($this->session->userdata('role')=='staff'){
 
 			$id = $this->session->userdata('user_id');
 			$arr_gambar = $this->model_user->photo_dosen($id)->result();
 			$data['gambar'] = $arr_gambar[0];
-
-			$this->load->view('header',$data);
+			$data['user'] = $this->model_user->cek_dosen($id);
+			$this->load->view('dosen/header',$data);
 			$this->load->view('dosen/tambah_project');
 			$this->load->view('footer');
 		}else{
@@ -36,6 +38,7 @@ class Dosen extends CI_Controller {
 	}
 
 	public function tambah_project(){
+		$this->load->library('session');
 		$namaProject				= $this->input->post('namaProject');
 		$deskripsi					= $this->input->post('deskripsi');
 		$prasyarat					= $this->input->post('prasyarat');
@@ -64,13 +67,15 @@ class Dosen extends CI_Controller {
 	}
 
 	public function edit($project_id){
+		$this->load->library('session');
 		if($this->session->userdata('role')=='staff'){
 			$id = $this->session->userdata('user_id');
 			$where = array('project_id' => $project_id);
 			$arr_gambar = $this->model_user->photo_dosen($id)->result();
 			$data['gambar'] = $arr_gambar[0];
 			$data['project'] = $this->model_project->edit_data($where, 'tb_project')->result();
-			$this->load->view('header',$data);
+			$data['user'] = $this->model_user->cek_dosen($id);
+			$this->load->view('dosen/header',$data);
 			$this->load->view('dosen/edit', $data);
 			$this->load->view('footer');
 		}else{
@@ -79,6 +84,7 @@ class Dosen extends CI_Controller {
 	}
 
 	public function update(){
+		$this->load->library('session');
 		$id = $this->input->post('project_id');
 		$prasyarat = $this->input->post('prasyarat');
 		$batas_pendaftaran = $this->input->post('batas_pendaftaran');
@@ -98,18 +104,21 @@ class Dosen extends CI_Controller {
 	}
 
 	public function detail($project_id){
+		$this->load->library('session');
 		$id = $this->session->userdata('user_id');
 		$data['detail'] = $this->model_project->detail_data($project_id);
 		$data['pendaftar'] = $this->model_pendaftar->pendaftar_project($project_id)->result();
 		$arr_gambar = $this->model_user->photo_dosen($id)->result();
-			$data['gambar'] = $arr_gambar[0];
-		$this->load->view('header',$data);
+		$data['gambar'] = $arr_gambar[0];
+		$data['user'] = $this->model_user->cek_dosen($id);
+		$this->load->view('dosen/header',$data);
 		$this->load->view('dosen/project_detail', $data);
 		$this->load->view('footer');
 
 	}
 
 	public function terima($register_id){
+		$this->load->library('session');
 		$where = array( 'register_id' => $register_id );
 		$update = array( 'status_pendaftar' => "Diterima");
 

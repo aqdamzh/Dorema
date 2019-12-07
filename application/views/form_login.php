@@ -61,10 +61,12 @@
         </div>
       </form>
       <hr>
-      <div class="col-4">
+      <div class="row">
+        <div class="col-4">
             <?php echo anchor('sso','<button class="btn btn-secondary" style="width: 12em">
                   <i class="fas fa-spinner mr-1"></i>SSO Login</button>')?>
-          </div>
+        </div>
+      </div>
     </div>
     <!-- /.login-card-body -->
   </div>

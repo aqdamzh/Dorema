@@ -90,14 +90,13 @@ class Auth extends CI_Controller {
         }
     }
 
-    public function logout(){
-        if(SSO\SSO::check()){
-            SSO\SSO::logout('https://sso123test.azurewebsites.net/');
-        }else
-        {
-            $this->load->library('session');
-            $this->session->sess_destroy();
-            redirect('auth/login');
-        }
+    public function logout_mahasiswa(){
+        SSO\SSO::logout('https://sso123test.azurewebsites.net/');
+    }
+
+    public function logout_dosen(){
+        $this->load->library('session');
+        $this->session->sess_destroy();
+        redirect('auth/login');
     }
 }

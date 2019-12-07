@@ -80,7 +80,7 @@
                   Profile
                 </a>               
                 <div class="dropdown-divider"></div>
-                <?php echo anchor('auth/logout','<span class="dropdown-item"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-200"></i>
+                <?php echo anchor('auth/logout_dosen','<span class="dropdown-item"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-200"></i>
                   Logout</span>') ?>
             </div>
       </li>
