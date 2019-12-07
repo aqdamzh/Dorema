@@ -79,7 +79,7 @@
                   <?php if(in_array($pjt->project_id, $pendaftar,TRUE)) {
                     echo anchor('mahasiswa/dashboard/','<button class="btn btn-secondary" style="width: 12em">
                   <i class="fas fa-spinner mr-1"></i>Telah Daftar</button>'); 
-                }elseif(!($mahasiswa->phone_number==''||$mahasiswa->skill==''||$mahasiswa->interest=='')){
+                }elseif(!($user->phone_number==''||$user->skill==''||$user->interest=='')){
                     echo anchor('mahasiswa/daftar/'.$pjt->project_id,'<button class="btn btn-warning" style="width: 12em">
                     <i class="fas fa-plus mr-1"></i> Daftar</button>');
                   }else {

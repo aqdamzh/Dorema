@@ -2,6 +2,7 @@
 class Auth extends CI_Controller {
 
     public function index(){
+        $this->load->library('session');
         if($this->session->userdata('role')=='staff'){
             redirect('dosen/dashboard');
         }elseif ($this->session->userdata('role')=='mahasiswa'){
@@ -12,7 +13,7 @@ class Auth extends CI_Controller {
     }
 
     public function login(){
-
+        $this->load->library('session');
         if($this->session->userdata('role')=='staff'){
             redirect('dosen/dashboard');
         }elseif ($this->session->userdata('role')=='mahasiswa'){
@@ -90,8 +91,13 @@ class Auth extends CI_Controller {
     }
 
     public function logout(){
-        $this->session->sess_destroy();
-        SSO\SSO::logout();
-        redirect('auth/login');
+        if(SSO\SSO::check()){
+            SSO\SSO::logout('http://localhost/dorema/auth/login');
+        }else
+        {
+            $this->load->library('session');
+            $this->session->sess_destroy();
+            redirect('auth/login');
+        }
     }
 }

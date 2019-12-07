@@ -5,23 +5,29 @@ class Mahasiswa extends CI_Controller {
 
 	public function list()
 	{
-		if($this->session->userdata('role')=='mahasiswa'){
-			$id = $this->session->userdata('user_id');
-			$where = array('npm' => $id);
-			$arr_gambar = $this->model_user->photo_mahasiswa($id)->result();
-			$pendaftar = $this->model_pendaftar->view_myproject()->result();
-			$data['project'] = $this->model_project->view_data()->result();
-			$data['pendaftar'] = array();
-			$data['gambar'] = $arr_gambar[0];
-			$data['mahasiswa'] = $this->model_user->cek_mahasiswa($id);
-			foreach ($pendaftar as $pdr) :
-				array_push($data['pendaftar'],$pdr->id_project);
-			endforeach;
-
-			$this->load->view('header',$data);
-			$this->load->view('mahasiswa/project_list', $data);
-			$this->load->view('footer');
-		}else {
+		if(SSO\SSO::check()){
+			SSO\SSO::authenticate();
+			$user = SSO\SSO::getUser();
+			if($user->role=='mahasiswa'){
+				$id = $user->npm;
+				$where = array('npm' => $id);
+				$arr_gambar = $this->model_user->photo_mahasiswa($id)->result();
+				$pendaftar = $this->model_pendaftar->view_myproject($id)->result();
+				$data['project'] = $this->model_project->view_data()->result();
+				$data['pendaftar'] = array();
+				$data['gambar'] = $arr_gambar[0];
+				$data['user'] = $this->model_user->cek_mahasiswa($id);
+				foreach ($pendaftar as $pdr) :
+					array_push($data['pendaftar'],$pdr->id_project);
+				endforeach;
+	
+				$this->load->view('header',$data);
+				$this->load->view('mahasiswa/project_list', $data);
+				$this->load->view('footer');
+			}else {
+				redirect('auth/login');
+			}
+		}else{
 			redirect('auth/login');
 		}
 		

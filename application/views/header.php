@@ -69,8 +69,7 @@
       
       <li class="dropdown user user-menu ">
         <a href="#" class="dropdown-toggle text-dark" data-toggle="dropdown">
-              <span class="hidden-xs"> <?php echo $this->session->userdata(
-                'name') ?> </span>
+              <span class="hidden-xs"> <?php echo $user->name ?> </span>
               
               <img src="<?php echo base_url().'assets/adminLTE/dist/img/'.$gambar->photo ?>" class="user-image" alt="User Image">
               

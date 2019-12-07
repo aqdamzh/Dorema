@@ -10,8 +10,8 @@ class Model_pendaftar extends CI_Model{
         ->get_where('tb_pendaftar', array('register_id' => $where))->row();
     }
 
-    public function view_myproject(){
-        $mahasiswa_id = $this->session->userdata('user_id');
+    public function view_myproject($id){
+        $mahasiswa_id = $id;
         $this->db->select('*');
         $this->db->from('tb_pendaftar');
         $this->db->join('tb_project', 'tb_project.project_id = tb_pendaftar.id_project');
