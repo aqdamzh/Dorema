@@ -92,7 +92,7 @@ class Auth extends CI_Controller {
 
     public function logout(){
         if(SSO\SSO::check()){
-            SSO\SSO::logout('http://localhost/dorema/auth/login');
+            SSO\SSO::logout('https://sso123test.azurewebsites.net/');
         }else
         {
             $this->load->library('session');
