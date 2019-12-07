@@ -59,10 +59,10 @@
 
                     <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>Project Terdaftar</b> <a class="float-right">1,322</a>
+                        <b>Project Terdaftar</b> <a class="float-right"><?php echo $terdaftar->jumlah ?></a>
                     </li>
                     <li class="list-group-item">
-                        <b>Project Dijalankan</b> <a class="float-right">543</a>
+                        <b>Project Dijalankan</b> <a class="float-right"><?php echo $dijalankan->jumlah ?></a>
                     </li>
                     </ul>
                 </div>

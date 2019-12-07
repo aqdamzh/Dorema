@@ -85,11 +85,10 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function test(){
-		$data['pendaftar'] = $this->model_pendaftar->view_myproject()->result();
-		$data2['pendaftar'] = $this->model_pendaftar->pendaftar_project("14")->result();
-		$data4['pendaftar'] = $this->model_user->cek_mahasiswa($id);
+		$data4['pendaftar'] = $this->model_pendaftar->view_pendaftar("35");
+		$data5['pendaftar'] = $this->model_pendaftar->project_dijalankan('1706043191');
 
-		$this->load->view('test', $data4);
+		$this->load->view('test', $data5);
 
 	}
 	public function profil(){
@@ -99,6 +98,8 @@ class Mahasiswa extends CI_Controller {
 		$arr_gambar = $this->model_user->photo_mahasiswa($id)->result();
 		$data['gambar'] = $arr_gambar[0];
 		$data['user'] = $this->model_user->cek_mahasiswa($id);
+		$data['terdaftar'] = $this->model_pendaftar->project_terdaftar($id);
+		$data['dijalankan'] = $this->model_pendaftar->project_dijalankan($id);
 		$this->load->view('mahasiswa/header',$data);
 		$this->load->view('mahasiswa/profil_mahasiswa',$data);
 		$this->load->view('footer');

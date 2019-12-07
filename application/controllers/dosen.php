@@ -133,4 +133,18 @@ class Dosen extends CI_Controller {
 		
 	}
 
+	public function detail_pendaftar($reg_id){
+		$this->load->library('session');
+		$id = $this->session->userdata('user_id');
+		$arr_gambar = $this->model_user->photo_dosen($id)->result();
+		$data['gambar'] = $arr_gambar[0];
+		$data['user'] = $this->model_user->cek_dosen($id);
+		$data['pendaftar'] = $this->model_pendaftar->view_pendaftar($reg_id);
+		$data['terdaftar'] = $this->model_pendaftar->project_terdaftar($data['pendaftar']->id_pendaftar);
+		$data['dijalankan'] = $this->model_pendaftar->project_dijalankan($data['pendaftar']->id_pendaftar);
+		$this->load->view('dosen/header',$data);
+		$this->load->view('dosen/detail_pendaftar', $data);
+		$this->load->view('footer');
+	}
+
 }

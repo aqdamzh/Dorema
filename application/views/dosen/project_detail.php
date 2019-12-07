@@ -111,7 +111,7 @@
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="<?php echo base_url() ?>assets/adminLTE/dist/img/<?php echo $pdr->photo ?>" alt="user image">
                         <span class="username">
-                          <a href="#"><?php echo $pdr->name ?></a>
+                          <a href="<?php echo base_url() ?>dosen/detail_pendaftar/<?php echo $pdr->register_id ?>"><?php echo $pdr->name ?></a>
                         </span>
                       </div>
                       <!-- /.user-block -->

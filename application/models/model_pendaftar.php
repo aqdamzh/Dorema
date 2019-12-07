@@ -6,8 +6,11 @@ class Model_pendaftar extends CI_Model{
     }
 
     public function view_pendaftar($where){
-        return $this->db
-        ->get_where('tb_pendaftar', array('register_id' => $where))->row();
+        $this->db->select('*');
+        $this->db->from('tb_pendaftar');
+        $this->db->join('tb_mahasiswa', 'tb_mahasiswa.npm = tb_pendaftar.id_pendaftar');
+        return $this->db->limit(1)
+        ->where('register_id', $where)->get()->row();
     }
 
     public function view_myproject($id){
@@ -23,6 +26,18 @@ class Model_pendaftar extends CI_Model{
         $this->db->from('tb_pendaftar');
         $this->db->join('tb_mahasiswa', 'tb_mahasiswa.npm = tb_pendaftar.id_pendaftar');
         return $this->db->where('id_project', $where)->get();
+    }
+
+    public function project_terdaftar($where){
+        $sql = "select COUNT(id_pendaftar) as jumlah FROM tb_pendaftar WHERE id_pendaftar= ?";
+        $query = $this->db->query($sql, array($where));
+        return $query->row();
+    }
+
+    public function project_dijalankan($where){
+        $sql = "select COUNT(id_pendaftar) as jumlah FROM tb_pendaftar WHERE id_pendaftar= ? and status_pendaftar='Diterima'";
+        $query = $this->db->query($sql, array($where));
+        return $query->row();
     }
 
 }
