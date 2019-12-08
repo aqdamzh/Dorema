@@ -54,17 +54,7 @@
                     </div>
 
                     <h3 class="profile-username text-center"><?php echo $user->name ?></h3>
-
-                    <p class="text-muted text-center"><?php echo $user->study_program ?></p>
-
-                    <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item">
-                        <b>Project Terdaftar</b> <a class="float-right"><?php echo $terdaftar->jumlah ?></a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Project Dijalankan</b> <a class="float-right"><?php echo $dijalankan->jumlah ?></a>
-                    </li>
-                    </ul>
+                    <p class="text-muted text-center"><?php echo $user->office ?></p>
                 </div>
                 <!-- /.card-body -->
                 </div>
@@ -77,32 +67,21 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Office</strong>
 
-                    <p class="text-muted">
-                    <?php echo $user->study_program ?><br><?php echo $user->educational_program ?>
-                    </p>
+                    <p class="text-muted"><?php echo $user->office ?></p>
 
                     <hr>
 
-                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                    <strong><i class="fas fa-pencil-alt mr-1"></i> Phone Number</strong>
 
-                    <p class="text-muted"><?php echo $user->address ?></p>
-
-                    <hr>
-
-                    <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-                    <p class="text-muted">
-                    <?php echo $user->skill ?>
-                    </p>
+                    <p class="text-muted"><?php echo $user->phone_number ?></p>      
 
                     <hr>
 
-                    <strong><i class="fas fa-smile-beam mr-1"></i> Interest</strong>
+                    <strong><i class="fas fa-pencil-alt mr-1"></i> Email</strong>
 
-                    <p class="text-muted"><?php echo $user->interest ?></p>
-                    
+                    <p class="text-muted"><?php echo $user->email ?></p>            
                 </div>
                 <!-- /.card-body -->
                 </div>
@@ -118,8 +97,8 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
-                            <input type="hidden" name="npm" class="form-control"
-                             value="<?php echo $user->npm ?>">
+                            <input type="hidden" name="nip" class="form-control"
+                             value="<?php echo $user->nip ?>">
                             <input type="text" class="form-control" name="name" id="name" placeholder="Name"
                             value="<?php echo $user->name ?>" disabled>
                             </div>
@@ -141,24 +120,10 @@
                         <?php echo form_error('address', '<div class="text-danger 
                         small ml-2">','</div>'); ?>
                         <div class="form-group row">
-                            <label for="address" class="col-sm-2 col-form-label">Alamat</label>
+                            <label for="office" class="col-sm-2 col-form-label">Ruang Kerja</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" name="address" id="address" placeholder="Address"
-                            value="<?php echo $user->address ?>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="skill" class="col-sm-2 col-form-label">Kemampuan</label>
-                            <div class="col-sm-10">
-                            <textarea class="form-control" name="skill" id="skill" placeholder="Skills"
-                            ><?php echo $user->skill ?></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="interest" class="col-sm-2 col-form-label">Ketertarikan</label>
-                            <div class="col-sm-10">
-                            <textarea class="form-control" name="interest" id="interest" placeholder="Interest"
-                            ><?php echo $user->interest ?></textarea>
+                            <input type="text" class="form-control" name="office" id="office" placeholder="Office"
+                            value="<?php echo $user->office ?>">
                             </div>
                         </div>
                         <div class="form-group row">

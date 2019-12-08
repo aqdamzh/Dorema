@@ -53,4 +53,9 @@ class Model_user extends CI_Model{
         $this->db->update('tb_mahasiswa', $data);
     }
 
+    public function update_dosen($where, $data){
+        $this->db->where($where);
+        $this->db->update('tb_dosen', $data);
+    }
+
 }

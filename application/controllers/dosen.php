@@ -147,4 +147,50 @@ class Dosen extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function profil(){
+		$this->load->library('session');
+		$id = $this->session->userdata('user_id');
+		$arr_gambar = $this->model_user->photo_dosen($id)->result();
+		$data['gambar'] = $arr_gambar[0];
+		$data['user'] = $this->model_user->cek_dosen($id);
+		$this->load->view('dosen/header',$data);
+		$this->load->view('dosen/profil_dosen',$data);
+		$this->load->view('footer');
+	}
+
+	public function update_profile(){
+		$id = $this->input->post('nip');
+		$phone_number = $this->input->post('phone');
+		$address = $this->input->post('office');
+		$email = $this->input->post('email');
+		$picture = $_FILES['photo'];
+
+		if($picture=''){}else{
+			$conf_pic['upload_path']	= './assets/adminLTE/dist/img/';
+			$conf_pic['allowed_types'] = 'jpg|png|gif';
+		}
+
+		$this->load->library('upload', $conf_pic);
+		if(!$this->upload->do_upload('photo')){
+			echo "Upload Gagal!"; die();
+		}else{
+			$picture = $this->upload->data('file_name');
+		}
+
+		$data = array(
+			'email' => $email,
+			'phone_number' => $phone_number,
+			'office' => $office,
+			'photo' => $picture,
+		);
+	
+		$where = array(
+			'nip' => $id
+		);
+	
+		$this->model_user->update_dosen($where, $data);
+		redirect('dosen/profil');
+	}
+
+
 }

@@ -111,6 +111,7 @@ class Mahasiswa extends CI_Controller {
 		$address = $this->input->post('address');
 		$skill = $this->input->post('skill');
 		$interest = $this->input->post('interest');
+		$email = $this->input->post('email');
 		$picture = $_FILES['photo'];
 
 		if($picture=''){}else{
@@ -126,6 +127,7 @@ class Mahasiswa extends CI_Controller {
 		}
 
 		$data = array(
+			'email' => $email,
 			'phone_number' => $phone_number,
 			'address' => $address,
 			'skill' => $skill,
