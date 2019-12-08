@@ -67,7 +67,12 @@ class Mahasiswa extends CI_Controller {
 
 		$this->load->library('upload', $conf_pdf);
 		if(!$this->upload->do_upload('cv')){
-			echo "Upload Gagal!"; die();
+			SSO\SSO::authenticate();
+			$user = SSO\SSO::getUser();
+			$id = $user->npm;
+			$pdf=$this->model_pendaftar->cv_mahasiswa($id)->row()->cv;
+			$id_project = $this->input->post('project_id');
+			redirect('mahasiswa/upload_cv/'.$id_project); die();
 		}else{
 			$pdf = $this->upload->data('file_name');
 		}
@@ -86,7 +91,8 @@ class Mahasiswa extends CI_Controller {
 
 	public function test(){
 		$data4['pendaftar'] = $this->model_pendaftar->view_pendaftar("35");
-		$data5['pendaftar'] = $this->model_pendaftar->project_dijalankan('1706043191');
+		$data = $this->model_pendaftar->view_pendaftar(37);
+		$data5['pendaftar'] = $this->model_pendaftar->cv_mahasiswa(1706042882)->row()->cv;
 
 		$this->load->view('test', $data5);
 
