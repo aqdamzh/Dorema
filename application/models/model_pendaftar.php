@@ -39,5 +39,15 @@ class Model_pendaftar extends CI_Model{
         $query = $this->db->query($sql, array($where));
         return $query->row();
     }
+    public function sendNotif($where){
+        $sql = "SELECT email from tb_mahasiswa where npm = ?";
+        $query = $this->db->query($sql, array($where));
+        return $query->row();
 
+    }
+    public function cv_mahasiswa($where){
+        $this->db->select('cv');
+        $this->db->from('tb_pendaftar');
+        return $this->db->where('id_pendaftar',$where)->get();
+    }
 }

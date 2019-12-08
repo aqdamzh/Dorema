@@ -91,7 +91,7 @@ class Auth extends CI_Controller {
     }
 
     public function logout_mahasiswa(){
-        SSO\SSO::logout('https://dorema.azurewebsites.net/');
+        SSO\SSO::logout('http://localhost/dorema/');
     }
 
     public function logout_dosen(){
