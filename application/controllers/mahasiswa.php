@@ -121,7 +121,11 @@ class Mahasiswa extends CI_Controller {
 
 		$this->load->library('upload', $conf_pic);
 		if(!$this->upload->do_upload('photo')){
-			echo "Upload Gagal!"; die();
+			SSO\SSO::authenticate();
+			$user = SSO\SSO::getUser();
+			$id = $user->npm;
+			$picture = $this->model_user->photo_mahasiswa($id)->result();
+			redirect('mahasiswa/profil'); die();
 		}else{
 			$picture = $this->upload->data('file_name');
 		}
