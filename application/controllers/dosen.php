@@ -210,6 +210,22 @@ class Dosen extends CI_Controller {
 			$this->load->library('session');
 			$id = $this->session->userdata('user_id');
 			$picture = $this->model_user->photo_dosen($id)->result();
+			$id = $this->input->post('nip');
+			$phone_number = $this->input->post('phone');
+			$address = $this->input->post('office');
+			$email = $this->input->post('email');
+			$data = array(
+				'email' => $email,
+				'phone_number' => $phone_number,
+				'office' => $office,
+				
+			);
+		
+			$where = array(
+				'nip' => $id
+			);
+		
+			$this->model_user->update_dosen($where, $data);
 			redirect('dosen/profil'); die();
 		}else{
 			$picture = $this->upload->data('file_name');
