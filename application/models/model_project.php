@@ -1,8 +1,9 @@
 <?php
 class Model_project extends CI_Model{
 
-    public function view_data(){
-        return $this->db->get('tb_project');
+    public function view_data($limit, $start){
+        return $this->db->get('tb_project', $limit, $start);
+
     }
     public function view_mydata(){
         $pengampu = $this->session->userdata('user_id');
@@ -28,5 +29,11 @@ class Model_project extends CI_Model{
     public function detail_data($id = NULL){
         return $this->db
         ->get_where('tb_project', array('project_id' => $id))->row();
+    }
+
+    public function row(){
+        
+        $query = $this->db->query('SELECT * FROM tb_project');
+        return $query->num_rows();
     }
 }
