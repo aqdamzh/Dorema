@@ -34,7 +34,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url() ?>dosen/dashboard">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() ?>dosen/detail/<?php echo $pendaftar->id_project ?>">Kembali</a></li>
                 <li class="breadcrumb-item active">Detail pendaftar</li>
                 </ol>
             </div>
