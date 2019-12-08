@@ -67,19 +67,19 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Office</strong>
+                    <strong><i class="fas fa-building mr-1"></i> Office</strong>
 
                     <p class="text-muted"><?php echo $user->office ?></p>
 
                     <hr>
 
-                    <strong><i class="fas fa-pencil-alt mr-1"></i> Phone Number</strong>
+                    <strong><i class="fas fa-phone mr-1"></i> Phone Number</strong>
 
                     <p class="text-muted"><?php echo $user->phone_number ?></p>      
 
                     <hr>
 
-                    <strong><i class="fas fa-pencil-alt mr-1"></i> Email</strong>
+                    <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
 
                     <p class="text-muted"><?php echo $user->email ?></p>            
                 </div>
