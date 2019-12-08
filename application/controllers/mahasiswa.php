@@ -151,7 +151,28 @@ class Mahasiswa extends CI_Controller {
 
 		$this->load->library('upload', $conf_pic);
 		if(!$this->upload->do_upload('photo')){
+			$id = $this->input->post('npm');
+			$phone_number = $this->input->post('phone');
+			$address = $this->input->post('address');
+			$skill = $this->input->post('skill');
+			$interest = $this->input->post('interest');
+			$email = $this->input->post('email');
 			$picture = $this->model_user->photo_mahasiswa($id)->result();
+			$data = array(
+				'email' => $email,
+				'phone_number' => $phone_number,
+				'address' => $address,
+				'skill' => $skill,
+				'interest' => $interest,
+				
+			);
+		
+			$where = array(
+				'npm' => $id
+			);
+		
+			$this->model_user->update_mahasiswa($where, $data);
+			
 			redirect('mahasiswa/profil'); die();
 		}else{
 			$picture = $this->upload->data('file_name');
