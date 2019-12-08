@@ -93,7 +93,7 @@
                 <div class="card-header p-2">
                 </div><!-- /.card-header -->
                 <div class="card-body">
-                        <?php echo form_open_multipart('mahasiswa/update_profile'); ?>
+                    <?php echo form_open_multipart('dosen/update_profile'); ?>
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
@@ -138,7 +138,7 @@
                             </div>
                         </div>
 
-                        <?php echo form_close(); ?>
+                    <?php echo form_close(); ?>
                 </div><!-- /.card-body -->
                 </div>
                 <!-- /.nav-tabs-custom -->

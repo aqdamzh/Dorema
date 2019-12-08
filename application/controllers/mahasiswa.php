@@ -42,7 +42,7 @@ class Mahasiswa extends CI_Controller {
 				$data['page'] = $this->uri->segment(3);		
 				$data['project'] = $this->model_project->view_data($config["per_page"], $data['page'])->result();;           
 				$data['pagination'] = $this->pagination->create_links();
-				
+
 				$data['pendaftar'] = array();
 				$data['gambar'] = $arr_gambar[0];
 				$data['user'] = $this->model_user->cek_mahasiswa($id);
@@ -84,8 +84,7 @@ class Mahasiswa extends CI_Controller {
 	public function daftar(){
 		SSO\SSO::authenticate();
 		$user = SSO\SSO::getUser();
-
-
+		$id = $user->npm;
 
 		$pdf = $_FILES['cv'];
 
@@ -96,7 +95,9 @@ class Mahasiswa extends CI_Controller {
 
 		$this->load->library('upload', $conf_pdf);
 		if(!$this->upload->do_upload('cv')){
-			echo "Upload Gagal!"; die();
+			$pdf=$this->model_pendaftar->cv_mahasiswa($id)->row()->cv;
+			$id_project = $this->input->post('project_id');
+			redirect('mahasiswa/upload_cv/'.$id_project); die();
 		}else{
 			$pdf = $this->upload->data('file_name');
 		}
@@ -150,7 +151,8 @@ class Mahasiswa extends CI_Controller {
 
 		$this->load->library('upload', $conf_pic);
 		if(!$this->upload->do_upload('photo')){
-			echo "Upload Gagal!"; die();
+			$picture = $this->model_user->photo_mahasiswa($id)->result();
+			redirect('mahasiswa/profil'); die();
 		}else{
 			$picture = $this->upload->data('file_name');
 		}
