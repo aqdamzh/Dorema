@@ -172,10 +172,9 @@ class Dosen extends CI_Controller {
 
 		$this->load->library('upload', $conf_pic);
 		if(!$this->upload->do_upload('photo')){
-			SSO\SSO::authenticate();
-			$user = SSO\SSO::getUser();
-			$id = $user->npm;
-			$picture = $this->model_user->photo_mahasiswa($id)->result();
+			$this->load->library('session');
+			$id = $this->session->userdata('user_id');
+			$picture = $this->model_user->photo_dosen($id)->result();
 			redirect('dosen/profil'); die();
 		}else{
 			$picture = $this->upload->data('file_name');
