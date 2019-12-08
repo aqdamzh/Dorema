@@ -105,6 +105,10 @@
           <?php endforeach; ?>
           </div>
           <!-- /.col -->
+          <div class="col-md-7">
+            <?php echo $pagination; ?>
+                </div>
+              </div>
         </div>
         <!-- ./row -->
       </div><!-- /.container-fluid -->
