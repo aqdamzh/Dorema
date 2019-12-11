@@ -1,1 +1,1 @@
-<?php print_r($pendaftar); ?>
+<?php print_r($test); ?>
