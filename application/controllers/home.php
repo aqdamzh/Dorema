@@ -7,8 +7,17 @@ class Home extends CI_Controller{
         $user = SSO\SSO::getUser();
 
         switch($user->role){
-            case 'staff' : 
-                
+            case 'staff' :
+                $nip = $user->nip;
+                $name = $user->name;
+                $data = array(
+                    'nip' => $nip,
+                    'name' => $name,);
+                $auth_dosen = $this->model_user->cek_dosen($nip);
+                if($auth_dosen == FALSE){
+                    $this->model_user->input_mahasiswa($data);
+                } 
+                redirect('dosen/dashboard');   
             break;
             case 'mahasiswa' :
                 $npm = $user->npm;
@@ -23,8 +32,8 @@ class Home extends CI_Controller{
                     'study_program' => $study_program,
                     'educational_program' => $educational_program,);
 
-                $auth_dosen = $this->model_user->cek_mahasiswa($npm);
-                if($auth_dosen == FALSE){
+                $auth_mahasiswa = $this->model_user->cek_mahasiswa($npm);
+                if($auth_mahasiswa == FALSE){
                     $this->model_user->input_mahasiswa($data);
                 } 
                 redirect('mahasiswa/list');

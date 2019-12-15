@@ -4,48 +4,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dosen extends CI_Controller {
 	public function dashboard()
 	{
-		$this->load->library('session');
-		if($this->session->userdata('role')=='staff'){
-			$id = $this->session->userdata('user_id');
-			$arr_gambar = $this->model_user->photo_dosen($id)->result();
-			$data['gambar'] = $arr_gambar[0];
-			$data['project'] = $this->model_project->view_mydata()->result();
-			$data['user'] = $this->model_user->cek_dosen($id);
-			$this->load->view('dosen/header',$data);
-			$this->load->view('dosen/dashboard_dosen', $data);
-			$this->load->view('footer');
+		if(SSO\SSO::check()){
+			SSO\SSO::authenticate();
+			$user = SSO\SSO::getUser();
+			if($user->role=='staff'){
+				$id = $user->nip;
+				$arr_gambar = $this->model_user->photo_dosen($id)->result();
+				$data['gambar'] = $arr_gambar[0];
+				$data['project'] = $this->model_project->view_mydata()->result();
+				$data['user'] = $this->model_user->cek_dosen($id);
+				$this->load->view('dosen/header',$data);
+				$this->load->view('dosen/dashboard_dosen', $data);
+				$this->load->view('footer');
+			}else{
+				redirect('auth/login');
+			}
+
 		}else{
 			redirect('auth/login');
 		}
-		
 	}
 
 	public function add()
 	{
-		$this->load->library('session');
-		if($this->session->userdata('role')=='staff'){
-
-			$id = $this->session->userdata('user_id');
-			$arr_gambar = $this->model_user->photo_dosen($id)->result();
-			$data['gambar'] = $arr_gambar[0];
-			$data['user'] = $this->model_user->cek_dosen($id);
-			$this->load->view('dosen/header',$data);
-			$this->load->view('dosen/tambah_project');
-			$this->load->view('footer');
+		if(SSO\SSO::check()){
+			SSO\SSO::authenticate();
+			$user = SSO\SSO::getUser();
+			if($user->role=='staff'){
+	
+				$id = $id = $user->nip;
+				$arr_gambar = $this->model_user->photo_dosen($id)->result();
+				$data['gambar'] = $arr_gambar[0];
+				$data['user'] = $this->model_user->cek_dosen($id);
+				$this->load->view('dosen/header',$data);
+				$this->load->view('dosen/tambah_project');
+				$this->load->view('footer');
+			}else{
+				redirect('auth/login');
+			}
 		}else{
 			redirect('auth/login');
 		}
 	}
 
 	public function tambah_project(){
-		$this->load->library('session');
+		SSO\SSO::authenticate();
+		$user = SSO\SSO::getUser();
 		$namaProject				= $this->input->post('namaProject');
 		$deskripsi					= $this->input->post('deskripsi');
 		$prasyarat					= $this->input->post('prasyarat');
 		$batasPendaftaran			= $this->input->post('batasPendaftaran');
 		$kuota						= $this->input->post('kuota');
-		$pengampu					= $this->session->userdata('name');
-		$id_pengampu				= $this->session->userdata('user_id');
+		$pengampu					= $user->name;
+		$id_pengampu				= $user->nip;
 
 		$data = array(
 			'nama_project'			=> $namaProject,
@@ -67,25 +78,32 @@ class Dosen extends CI_Controller {
 	}
 
 	public function edit($project_id){
-		$this->load->library('session');
-		if($this->session->userdata('role')=='staff'){
-			$id = $this->session->userdata('user_id');
-			$where = array('project_id' => $project_id);
-			$arr_gambar = $this->model_user->photo_dosen($id)->result();
-			$data['gambar'] = $arr_gambar[0];
-			$data['project'] = $this->model_project->edit_data($where, 'tb_project')->result();
-			$data['user'] = $this->model_user->cek_dosen($id);
-			$this->load->view('dosen/header',$data);
-			$this->load->view('dosen/edit', $data);
-			$this->load->view('footer');
+		if(SSO\SSO::check()){
+			SSO\SSO::authenticate();
+			$user = SSO\SSO::getUser();
+			if($user->role=='staff'){
+				$id = $user->nip;
+				$where = array('project_id' => $project_id);
+				$arr_gambar = $this->model_user->photo_dosen($id)->result();
+				$data['gambar'] = $arr_gambar[0];
+				$data['project'] = $this->model_project->edit_data($where, 'tb_project')->result();
+				$data['user'] = $this->model_user->cek_dosen($id);
+				$this->load->view('dosen/header',$data);
+				$this->load->view('dosen/edit', $data);
+				$this->load->view('footer');
+			}else{
+				redirect('auth/login');
+			}
 		}else{
 			redirect('auth/login');
 		}
+
 	}
 
 	public function update(){
-		$this->load->library('session');
-		$id = $this->input->post('project_id');
+		SSO\SSO::authenticate();
+		$user = SSO\SSO::getUser();
+		$id = $user->nip;
 		$prasyarat = $this->input->post('prasyarat');
 		$batas_pendaftaran = $this->input->post('batas_pendaftaran');
 		$kuota = $this->input->post('kuota');
@@ -104,8 +122,9 @@ class Dosen extends CI_Controller {
 	}
 
 	public function detail($project_id){
-		$this->load->library('session');
-		$id = $this->session->userdata('user_id');
+		SSO\SSO::authenticate();
+		$user = SSO\SSO::getUser();
+		$id = $user->nip;
 		$data['detail'] = $this->model_project->detail_data($project_id);
 		$data['pendaftar'] = $this->model_pendaftar->pendaftar_project($project_id)->result();
 		$arr_gambar = $this->model_user->photo_dosen($id)->result();
@@ -118,7 +137,8 @@ class Dosen extends CI_Controller {
 	}
 
 	public function terima($register_id){
-		$this->load->library('session');
+		SSO\SSO::authenticate();
+		$user = SSO\SSO::getUser();
 		$where = array( 'register_id' => $register_id );
 		$update = array( 'status_pendaftar' => "Diterima");
 
@@ -138,7 +158,7 @@ class Dosen extends CI_Controller {
 		$project_name = $project->nama_project;
 		$this->load->library('email',$config);
 		$receive = $this->model_pendaftar->sendNotif($data->id_pendaftar);
-		$sender = $this->session->userdata('name');
+		$sender = $id = $user->name;
 		$this->email->from('system.dorema@gmail.com',$sender);
 		$this->email->to($receive->email);
 		$this->email->subject($project_name);
@@ -169,8 +189,9 @@ class Dosen extends CI_Controller {
 	}
 
 	public function detail_pendaftar($reg_id){
-		$this->load->library('session');
-		$id = $this->session->userdata('user_id');
+		SSO\SSO::authenticate();
+		$user = SSO\SSO::getUser();
+		$id = $user->nip;
 		$arr_gambar = $this->model_user->photo_dosen($id)->result();
 		$data['gambar'] = $arr_gambar[0];
 		$data['user'] = $this->model_user->cek_dosen($id);
@@ -183,8 +204,9 @@ class Dosen extends CI_Controller {
 	}
 
 	public function profil(){
-		$this->load->library('session');
-		$id = $this->session->userdata('user_id');
+		SSO\SSO::authenticate();
+		$user = SSO\SSO::getUser();
+		$id = $user->nip;
 		$arr_gambar = $this->model_user->photo_dosen($id)->result();
 		$data['gambar'] = $arr_gambar[0];
 		$data['user'] = $this->model_user->cek_dosen($id);
@@ -207,10 +229,7 @@ class Dosen extends CI_Controller {
 
 		$this->load->library('upload', $conf_pic);
 		if(!$this->upload->do_upload('photo')){
-			$this->load->library('session');
-			$id = $this->session->userdata('user_id');
 			$picture = $this->model_user->photo_dosen($id)->result();
-			$id = $this->input->post('nip');
 			$phone_number = $this->input->post('phone');
 			$office = $this->input->post('office');
 			$email = $this->input->post('email');
